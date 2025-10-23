@@ -1,0 +1,20 @@
+{
+  "short_name": "LuluSudoku",
+  "name": "Lulu Sudoku - 绿意版",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4fbf6",
+  "theme_color": "#2b9a58",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

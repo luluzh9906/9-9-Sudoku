@@ -1,0 +1,99 @@
+/* 绿色主题 Lulu Sudoku - style.css */
+:root{
+  --bg: #f4fbf6;
+  --card: #ffffff;
+  --green-600: #2b9a58;
+  --green-400: #7bd389;
+  --muted: #6b7280;
+  --cell-size: min(64px, 9.5vw);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: "Noto Sans SC", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #f6fcf8 0%, var(--bg) 100%);
+  color:#12311a; display:flex;align-items:center;justify-content:center;padding:20px;
+}
+
+.container{
+  width:100%; max-width:720px; background:var(--card); border-radius:16px; padding:18px 20px 28px;
+  box-shadow: 0 10px 30px rgba(43,154,88,0.08);
+}
+
+/* header */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.title-block{display:flex;flex-direction:column}
+.title{margin:0;font-size:20px;color:var(--green-600)}
+.subtitle{font-size:12px;color:#3f8b5c;margin-top:4px}
+.controls{display:flex;align-items:center;gap:8px}
+.lbl{font-size:14px;color:#275c3a}
+select{padding:6px;border-radius:8px;border:1px solid #e8f2ea;background:#fff}
+.btn{padding:8px 12px;border-radius:10px;border:none;background:#eaf7ee;color:var(--green-600);cursor:pointer;font-weight:600}
+.btn.ghost{background:transparent;border:1px solid rgba(43,154,88,0.12);color:var(--green-600)}
+.btn.primary{background:var(--green-600);color:#fff;box-shadow:0 6px 16px rgba(43,154,88,0.12)}
+.status{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted);text-align:right}
+
+/* board */
+.board{
+  display:grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap:8px;
+  padding:14px;
+  background: transparent;
+  justify-items:center;
+  margin:10px auto 12px;
+  max-width: calc(var(--cell-size) * 9 + 8px*8 + 28px);
+}
+.cell{
+  width: var(--cell-size);
+  height: var(--cell-size);
+  display:flex;align-items:center;justify-content:center;
+  background: var(--green-400);
+  border-radius:12px;
+  font-size: calc(var(--cell-size) * 0.5);
+  color: #ffffff;
+  font-weight:700;
+  user-select:none;
+  cursor:pointer;
+  box-shadow: inset 0 -6px rgba(0,0,0,0.03);
+}
+.cell.empty{
+  background: #f6fff6; color: #1f6b3e; font-weight:600; cursor:pointer;
+  box-shadow: 0 4px 10px rgba(43,154,88,0.06);
+}
+.cell.prefilled{background:#ffffff; color:var(--green-600); font-weight:700; box-shadow:none; border: 2px solid rgba(43,154,88,0.06)}
+.cell.selected{outline:3px solid rgba(43,154,88,0.12)}
+.cell.conflict{background:#ffdede;color:#9b1b1b}
+
+/* 3x3 边界 */
+.board .cell{
+  border: 0;
+}
+.board .cell.col-border-right{ box-shadow: 6px 0 0 0 rgba(43,154,88,0.06) inset; }
+.board .cell.row-border-bottom{ box-shadow: 0 6px 0 0 rgba(43,154,88,0.06) inset; }
+
+/* keypad */
+.keypad{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:8px}
+.keys{display:grid;grid-template-columns:repeat(9, 1fr);gap:8px;width:100%}
+.key{padding:10px;border-radius:12px;border:none;background:#fff;color:var(--green-600);font-weight:700;font-size:18px;box-shadow:0 6px 14px rgba(16,24,40,0.06);cursor:pointer}
+.actions{display:flex;gap:12px;margin-top:6px}
+.actions .btn{flex:1}
+
+/* footer */
+.footer{text-align:center;color:var(--muted);margin-top:10px;font-size:13px}
+
+/* modal */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(7,9,8,0.28);padding:18px}
+.modal.hidden{display:none}
+.modal-card{width:100%;max-width:480px;background:#fff;border-radius:12px;padding:18px;box-shadow:0 16px 40px rgba(16,24,40,0.2)}
+.modal-card h2{margin:0 0 10px;color:var(--green-600)}
+.result p{margin:6px 0;color:#12311a}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:10px}
+.leaderboard-block{margin-top:12px}
+.leaderboard-block ol{padding-left:18px}
+.lb-actions{display:flex;justify-content:flex-end;margin-top:8px}
+@media (max-width:520px){
+  :root{--cell-size: min(48px, 9.2vw)}
+  .title{font-size:18px}
+}
